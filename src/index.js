@@ -14,8 +14,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: ['https://dashboard-five-omega-68.vercel.app/', 'http://localhost:5173'], 
-  credentials: true
+  origin: ['https://dashboard-five-omega-68.vercel.app', 'http://localhost:5173'], 
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Added OPTIONS for preflight
+  allowedHeaders: ["Content-Type", "Authorization", "Cookie"] // Explicitly allow Cookies
 }));
 app.use(express.json());
 app.use(cookieParser());
